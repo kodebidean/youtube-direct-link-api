@@ -1,11 +1,8 @@
 const ytdl = require('ytdl-core');
 
-const videoUrl = 'https://www.youtube.com/watch?v=WPNAy5EXGkI'; // Usa la misma URL de prueba
+const url = 'https://www.youtube.com/watch?v=5zfu8C-Cmpo';
+ytdl.getInfo(url).then(info => {
+  const audioFormat = ytdl.chooseFormat(info.formats, { quality: 'highestaudio' });
+  console.log('Audio URL:', audioFormat.url);
+});
 
-ytdl.getInfo(videoUrl)
-    .then(info => {
-        console.log('Información del video:', info);
-    })
-    .catch(error => {
-        console.error('Error al procesar la URL del video:', error);
-    });
